@@ -1,0 +1,195 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body{
+                background-color: white;
+                display: flex;
+                align-items: center;
+                height:100vh;
+                flex-direction: column;
+                text-align:center;
+            }
+            .phongchu {
+                font-size: 16px;
+                margin: 10px;
+            }
+            .link{
+                color:blue;
+                font-size: 17px;
+                margin-top: 13px;
+                text-decoration:none ;
+                text-shadow: 0 0 5px wheat;
+            }
+            .link:hover{
+                color:darkblue;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            .container{
+                text-align: center;
+            }
+            .project-title {
+                position: fixed;
+                top: 10px;
+                left: 20px;
+                font-size: 18px;
+                color: black;
+                font-weight: bold;
+                font-family: 'Georgia', serif;
+                text-shadow: 0 0 5px lightgray;
+                }
+            .banner-image{
+                width: 650px;
+                height: auto;
+                margin-top: 60px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px gray;
+            }
+            .nut3mien{
+                position:fixed;
+                top: 10px;
+                right: 20px;
+                display: flex;
+                gap:10px;
+            }
+            .nut3mien a {
+                background-color:green;
+                color: white;
+                padding: 8px 12px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-size: 18px;
+            
+
+            }
+            .nut3mien a:hover {
+                background-color: darkslategrey;
+                cursor: pointer;
+            }
+            .button-container {
+                display: flex;
+                justify-content: center ;
+                flex-wrap: wrap;
+                gap: 20px;
+                margin-top: 30px;
+            }
+            .location-button {
+                width: 180px;
+                background-color: #f0f0f0;
+                border-radius: 10px;
+                box-shadow: 0 0 8px gray;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+            
+            .location-button:hover {
+                transform: scale(1.05);
+            }
+            .location-button img {
+                width: 100%;
+                height: 120px;
+                object-fit: cover;
+            }
+            .caption {
+                padding: 10px;
+                font-weight: bold;
+            }
+            .location-detail  {
+                display: none;
+                margin-top: 50px;
+            }
+            .location-detail video {
+                width: 150%;
+                border-radius: 10px;
+                height: auto;
+                max-width: 2000px;
+                margin: 0 auto 100px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                left: 16%;
+                transform: translateX(-16%);
+            }
+            .back-button {
+                padding: 10px 20px;
+                background-color: crimson;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+            .back-button:hover {
+                background-color: darkred;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="project-title">AI đi Việt Nam </div>
+        <div class ="container">
+            <img src="dulich.png" alt="việt nam " class ="banner-image">
+            <p class ="phongchu">Hãy chọn 1 thành phố mà bạn  muốn trải nghiệm </p>
+            <p class ="phongchu">Bạn không thích ở đây ? Hãy cũng khám phá 1 miền mới </p>
+            <a href="trangkhac.html" class ="link">nhấn vào đây để chuyển sang miền mới nào</a> 
+        </div>
+        <div class ="nut3mien">
+            <a href="#mienbac">Miền Bắc</a>
+            <a href="#mientrung">Miền Trung </a>
+            <a href="#miennam">Miền Nam</a> 
+        </div>
+            <!--các nút dịa điểm -->
+            <div class="button-container">
+                <div class ="location-button" onclick="showDetail('hanoi')">
+                    <img src="hanoi.jpg" alt="Hà Nội">
+                    <div class="caption">Hà Nội</div>
+                </div>
+
+                <div class ="location-button" onclick="showDetail('thaibinh')">
+                    <img src="thaibinh.jpg" alt="Thái Bình">
+                    <div class="caption">Thái Bình</div>
+                </div>
+
+                <div class="location-button" onclick="showDetail('haiphong')">
+                    <img src="haiphong.jpg" alt="hải phòng">
+                    <div class="caption">Hải Phòng</div>
+                </div>
+        </div>
+        <!--Nội dung chi tiết khi hiện ra-->
+            <div class="location-detail" id="hanoi">
+                <h2> Khám phá Hà Nội </h2>
+                <video controls>
+                    <source src ="hanoi.mp4" type="video/mp4">
+                    trình duyệt không hỗ trợ video.
+                </video>
+                    <p>
+                        Hà Nội - thủ đô ngàn năm văn hiến, nơi hội tụ giữa truyền thống và hiện đại.
+                    <br>Chi phí trọn gói: khoảng 4.000.000 VNĐ (3 ngày 2 đêm).
+                    </p>
+                        <button class="back-button" onclick="goBack()">⬅ Quay lại</button>
+            </div>
+
+        <script>
+         function showDetail(id) {
+            document.querySelector('.button-container').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById(id).style.display = 'block';
+        }
+        function goBack() {
+            const details = document.querySelectorAll('.location-detail');
+            details.forEach(detail => detail.style.display = 'none');
+
+            document.querySelector('.button-container').style.display = 'flex';
+            document.querySelector('.container').style.display = 'block';
+        }
+
+        </script>
+
+    </body>
+    </html>
